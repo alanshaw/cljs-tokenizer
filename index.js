@@ -3,7 +3,6 @@ var Tokenizer = require("tokenizer")
 module.exports = function (cb) {
   var t = new Tokenizer(cb)
 
-  t.addRule(/^::([A-Za-z_=+\-*&?!$%|<>][A-Za-z0-9_=+\-*&?!$%|<>]*)$/, "namespace keyword")
   t.addRule(/^:([A-Za-z_=+\-*&?!$%|<>][A-Za-z0-9_=+\-*&?!$%|<>]*)$/, "keyword")
   t.addRule(/^([A-Za-z_=+\-*&?!$%|<>][A-Za-z0-9_=+\-*&?!$%|<>]*)$/, "symbol")
 
