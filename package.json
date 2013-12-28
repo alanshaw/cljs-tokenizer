@@ -4,7 +4,7 @@
   "description": "Clojurescript tokenizer",
   "main": "index.js",
   "scripts": {
-    "test": "node test/test < test/fixtures/shopping.cljs"
+    "test": "node test/test"
   },
   "keywords": [
     "tokenizer"
@@ -13,5 +13,8 @@
   "license": "MIT",
   "dependencies": {
     "tokenizer": "~1.1.2"
+  },
+  "devDependencies": {
+    "async": "~0.2.9"
   }
 }

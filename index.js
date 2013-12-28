@@ -3,11 +3,11 @@ var Tokenizer = require("tokenizer")
 module.exports = function (cb) {
   var t = new Tokenizer(cb)
 
-  t.addRule(/^::([_A-Za-z][A-Za-z0-9_\-]*)$/, "namespace keyword")
-  t.addRule(/^:([_A-Za-z][A-Za-z0-9_\-]*)$/, "keyword")
-  t.addRule(/^([_A-Za-z][A-Za-z0-9_\-]*)$/, "symbol")
+  t.addRule(/^::([A-Za-z_=+\-*&?!$%|<>][A-Za-z0-9_=+\-*&?!$%|<>]*)$/, "namespace keyword")
+  t.addRule(/^:([A-Za-z_=+\-*&?!$%|<>][A-Za-z0-9_=+\-*&?!$%|<>]*)$/, "keyword")
+  t.addRule(/^([A-Za-z_=+\-*&?!$%|<>][A-Za-z0-9_=+\-*&?!$%|<>]*)$/, "symbol")
 
-  t.addRule(/^;;[^\n]*$/, "line comment")
+  t.addRule(/^;[^\n]*$/, "line comment")
 
   t.addRule(/^\($/, "open paren")
   t.addRule(/^\)$/, "close paren")
@@ -16,9 +16,8 @@ module.exports = function (cb) {
   t.addRule(/^{$/, "open curly")
   t.addRule(/^}$/, "close curly")
 
-  t.addRule(/^(#|'|\^|\?|!|\.|\/)$/, "operator")
+  t.addRule(/^(#|'|\^|\.|\/)$/, "operator")
 
-  t.addRule(/^%([0-9]*|&)$/, "anonymous function param")
   t.addRule(/^"([^"\n]|\\")*"?$/, "string")
   t.addRule(/^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/, "number")
   t.addRule(Tokenizer.whitespace)
