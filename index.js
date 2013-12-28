@@ -16,8 +16,10 @@ module.exports = function (cb) {
   t.addRule(/^{$/, "open curly")
   t.addRule(/^}$/, "close curly")
 
-  t.addRule(/^(#|')$/, "operator")
+  t.addRule(/^(#|'|\^|\?|!|\.|\/)$/, "operator")
 
+  t.addRule(/^%([0-9]*|&)$/, "anonymous function param")
+  t.addRule(/^"([^"\n]|\\")*"?$/, "string")
   t.addRule(/^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/, "number")
   t.addRule(Tokenizer.whitespace)
 
