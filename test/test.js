@@ -1,5 +1,6 @@
 var fs = require("fs")
   , async = require("async")
+  , stream = require("stream")
   , cljsTokenize = require("../")
 
 var fixturesDir = __dirname + "/fixtures"
@@ -12,14 +13,19 @@ fs.readdir(fixturesDir, function (er, srcs) {
       console.log("\nTokenizing", src)
 
       var t = cljsTokenize()
-
-      t.on("token", function (token) {
-        console.log(token.type + " => " + JSON.stringify(token.content))
-      })
       t.on("error", cb)
-      t.on("finish", cb)
 
-      fs.createReadStream(fixturesDir + "/" + src).pipe(t)
+      var tokenStream = new stream.Writable()
+
+      tokenStream._writableState.objectMode = true
+      tokenStream._write = function (token, enc, cb) {
+        console.log(token.type + " => " + JSON.stringify(token.content))
+        cb()
+      }
+
+      tokenStream.on("finish", cb)
+
+      fs.createReadStream(fixturesDir + "/" + src).pipe(t).pipe(tokenStream)
     }
   })
 
