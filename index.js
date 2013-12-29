@@ -22,7 +22,6 @@ module.exports = function (cb) {
   t.addRule(/^\^$/, "metadata")
   t.addRule(/^#$/, "dispatch")
 
-
   t.addRule(/^"([^"]|\\")*"?$/, "string")
   t.addRule(/^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/, "number")
 
