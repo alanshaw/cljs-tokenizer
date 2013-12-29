@@ -7,10 +7,21 @@
     "test": "node test/test"
   },
   "keywords": [
-    "tokenizer"
+    "cljs",
+    "clojurescript",
+    "tokenize",
+    "tokenizer",
+    "lexer",
+    "source",
+    "code"
   ],
   "author": "Alan Shaw",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:alanshaw/cljs-tokenizer.git"
+  },
+  "homepage": "https://github.com/alanshaw/cljs-tokenizer",
   "dependencies": {
     "tokenizer": "~1.1.2"
   },
