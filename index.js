@@ -3,8 +3,8 @@ var Tokenizer = require("tokenizer")
 module.exports = function (cb) {
   var t = new Tokenizer(cb)
 
-  t.addRule(/^:([A-Za-z_=+\-*&?!$%|<>\./][A-Za-z0-9_=+\-*&?!$%|<>\./]*)$/, "keyword")
-  t.addRule(/^([A-Za-z_=+\-*&?!$%|<>\./][A-Za-z0-9_=+\-*&?!$%|<>\./]*)$/, "symbol")
+  t.addRule(/^:[A-Za-z0-9_=+\-*&?!$%|<>\./]*$/, "keyword")
+  t.addRule(/^[A-Za-z_=+\-*&?!$%|<>\./][A-Za-z0-9_=+\-*&?!$%|<>\./]*$/, "symbol")
 
   t.addRule(/^;[^\n]*$/, "line comment")
 
@@ -15,7 +15,7 @@ module.exports = function (cb) {
   t.addRule(/^{$/, "open curly")
   t.addRule(/^}$/, "close curly")
 
-  t.addRule(/^(#|'|\^)$/, "macro")
+  t.addRule(/^(#|'|\^|@)$/, "operator")
 
   t.addRule(/^"([^"]|\\")*"?$/, "string")
   t.addRule(/^\\[A-Za-z0-9]*$/, "character")
