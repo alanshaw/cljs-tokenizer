@@ -17,7 +17,8 @@ module.exports = function (cb) {
 
   t.addRule(/^(#|'|\^)$/, "macro")
 
-  t.addRule(/^"([^"\n]|\\")*"?$/, "string")
+  t.addRule(/^"([^"]|\\")*"?$/, "string")
+  t.addRule(/^\\[A-Za-z0-9]*$/, "character")
   t.addRule(/^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/, "number")
   t.addRule(Tokenizer.whitespace)
 
