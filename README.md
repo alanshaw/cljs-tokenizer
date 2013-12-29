@@ -17,7 +17,7 @@ process.stdin.pipe(t)
 
 For the input file hello.cljs:
 
-```clojurescript
+```clojure
 (ns hello.core)
 
 ; Hello World in clojurescript
